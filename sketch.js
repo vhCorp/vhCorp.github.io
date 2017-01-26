@@ -10,7 +10,8 @@ function preload() {
 }
 
 function setup() {
-
+    createP("Length of message:")
+    slider = createSlider(8,100)
     button = createButton("generate");
     button.mousePressed(markovIt);
     noCanvas();
@@ -41,7 +42,7 @@ function markovIt() {
 
     var currentGram = random(beginnings);
     var result = currentGram;
-    var len = round(avglen) + round(random(-1,10))
+    var len = round(slider.value() + avglen)
     for (var i = 0; i < len ; i++) {
         var possibilities = ngrams[currentGram];
 
